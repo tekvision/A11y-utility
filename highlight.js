@@ -2,7 +2,7 @@ let highlightElement = false;
 const highlightClassName = "highlight-tekvision";
 const highlightStyle = "outline: 5px solid red";
 
-export highlightInit = () => {
+export const highlightInit = () => {
   // Create and append the style element for the highlight class
   const styleElementWithHighlightClass = document.createElement("style");
   styleElementWithHighlightClass.innerHTML = `.${highlightClassName} { ${highlightStyle} !important; }`;
