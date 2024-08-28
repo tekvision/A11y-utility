@@ -1,17 +1,8 @@
 import {toggleHeadings} from "./heading.js";
+import {toggleHighlight, highlightInit} from "./highlight.js";
 
 try {
     const app = (() => {
-        let highlightElement = false;
-        
-        const highlightClassName = "highlight-tekvision";
-        const highlightStyle = "outline: 5px solid red";
-
-        // Create and append the style element for the highlight class
-        const styleElementWithHighlightClass = document.createElement("style");
-        styleElementWithHighlightClass.innerHTML = `.${highlightClassName} { ${highlightStyle} !important; }`;
-        document.head.appendChild(styleElementWithHighlightClass);
-
         // Display initial instructions
         const displayInstructions = () => {
             const initialInstruction = "Welcome! Press 'Alt + 2' to toggle the highlight mode on or off.\n" +
@@ -30,36 +21,9 @@ try {
             });
         };
 
-        // Toggle highlight mode
-        const toggleHighlight = () => {
-            highlightElement = !highlightElement;
-            highlightElement ? highlightElements() : unhighlightElements();
-        };
-
-        // Highlight elements
-        const highlightElements = () => {
-            const elementSelector = prompt("Enter the CSS selector of the elements you want to highlight:");
-            const elements = document.querySelectorAll(elementSelector);
-            
-            if (elements.length > 0) {
-                elements.forEach(element => element.classList.add(highlightClassName));
-                alert(`Successfully highlighted ${elements.length} element(s).`);
-            } else {
-                alert("No elements found for the provided selector. Please try again.");
-                highlightElement = false;
-            }
-        };
-
-        // Unhighlight elements
-        const unhighlightElements = () => {
-            const elements = document.querySelectorAll(`.${highlightClassName}`);
-            elements.forEach(element => element.classList.remove(highlightClassName));
-            alert("Highlight removed from all elements.");
-        };
-
-        
         // Initialize the application
         const init = () => {
+            highlightInit();
             displayInstructions();
             setupEventListeners();
         };
