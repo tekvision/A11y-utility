@@ -29,7 +29,7 @@ try {
 		const setupEventListeners = () => {
 			document.body.addEventListener("keydown", (event) => {
 				if (event.altKey && event.code === 'Digit0') {
-					displayInstructions
+					displayInstructions()
 				}
 				else if (event.altKey && event.code === 'Digit1') {
 					highlightElementsAndCaptureScreenshot();
